@@ -1,0 +1,10 @@
+unsupported
+unsupported
+(error "Parse Error: x_u64.sat:24.41: Symbol 'seq.nth' not declared as a variable
+
+          (concat #x00000000000000 (seq.nth s 0))
+                                    ^
+")
+real 0.00
+user 0.00
+sys 0.00

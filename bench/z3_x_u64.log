@@ -1,0 +1,66 @@
+sat
+(model 
+  (define-fun x () (_ BitVec 64)
+    #x000000000000869e)
+  (define-fun f () (_ BitVec 64)
+    #x0000000000004969)
+  (define-fun e () (_ BitVec 64)
+    #x0000000000000433)
+  (define-fun d () (_ BitVec 64)
+    #x000000000000b662)
+  (define-fun c () (_ BitVec 64)
+    #x0000000000001cb2)
+  (define-fun b () (_ BitVec 64)
+    #x00000000000069df)
+  (define-fun a () (_ BitVec 64)
+    #x0000000000002512)
+  (define-fun g () (_ BitVec 64)
+    #x0000000000000000)
+  (define-fun h () (_ BitVec 64)
+    #x0000000000000000)
+  (define-fun suffixes () String
+    "zodnecbudwessevpersutletfulpensytdurwepserwylsunrypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnexlunmeplutseppesdelsulpedtemledtulmetwenbynhexfebpyldulhetmevruttylwydtepbesdexsefwycburderneppurrysrebdennutsubpetrulsynregtydsupsemwynrecmegnetsecmulnymtevwebsummutnyxrextebfushepbenmuswyxsymselrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpelsyptermebsetdutdegtexsurfeltudnuxruxrenwytnubmedlytdusnebrumtynseglyxpunresredfunrevrefmectedrusbexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermertenlusnussyltecmexpubrymtucfyllepdebbermughuttunbylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmylwedducfurfexnulluclennerlexrupnedlecrydlydfenwelnydhusrelrudneshesfetdesretdunlernyrsebhulrylludremlysfynwerrycsugnysnyllyndyndemluxfedsedbecmunlyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes")
+  (define-fun prefixes () String
+    "dozmarbinwansamlitsighidfidlissogdirwacsabwissibrigsoldopmodfoglidhopdardorlorhodfolrintogsilmirholpaslacrovlivdalsatlibtabhanticpidtorbolfosdotlosdilforpilramtirwintadbicdifrocwidbisdasmidloprilnardapmolsanlocnovsitnidtipsicropwitnatpanminritpodmottamtolsavposnapnopsomfinfonbanmorworsipronnorbotwicsocwatdolmagpicdavbidbaltimtasmalligsivtagpadsaldivdactansidfabtarmonranniswolmispallasdismaprabtobrollatlonnodnavfignomnibpagsopralbilhaddocridmocpacravripfaltodtiltinhapmicfanpattaclabmogsimsonpinlomrictapfirhasbosbatpochactidhavsaplindibhosdabbitbarracparloddosbortochilmactomdigfilfasmithobharmighinradmashalraglagfadtopmophabnilnosmilfopfamdatnoldinhatnacrisfotribhocnimlarfitwalrapsarnalmoslandondanladdovrivbacpollaptalpitnambonrostonfodponsovnocsorlavmatmipfip")
+  (define-fun hash_works ((x!0 (_ BitVec 16))) Bool
+    (let ((a!1 (str.substr "dozmarbinwansamlitsighidfidlissogdirwacsabwissibrigsoldopmodfoglidhopdardorlorhodfolrintogsilmirholpaslacrovlivdalsatlibtabhanticpidtorbolfosdotlosdilforpilramtirwintadbicdifrocwidbisdasmidloprilnardapmolsanlocnovsitnidtipsicropwitnatpanminritpodmottamtolsavposnapnopsomfinfonbanmorworsipronnorbotwicsocwatdolmagpicdavbidbaltimtasmalligsivtagpadsaldivdactansidfabtarmonranniswolmispallasdismaprabtobrollatlonnodnavfignomnibpagsopralbilhaddocridmocpacravripfaltodtiltinhapmicfanpattaclabmogsimsonpinlomrictapfirhasbosbatpochactidhavsaplindibhosdabbitbarracparloddosbortochilmactomdigfilfasmithobharmighinradmashalraglagfadtopmophabnilnosmilfopfamdatnoldinhatnacrisfotribhocnimlarfitwalrapsarnalmoslandondanladdovrivbacpollaptalpitnambonrostonfodponsovnocsorlavmatmipfip"
+                           (* 3 (bv2int ((_ extract 15 8) x!0)))
+                           3))
+          (a!2 (str.substr "zodnecbudwessevpersutletfulpensytdurwepserwylsunrypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnexlunmeplutseppesdelsulpedtemledtulmetwenbynhexfebpyldulhetmevruttylwydtepbesdexsefwycburderneppurrysrebdennutsubpetrulsynregtydsupsemwynrecmegnetsecmulnymtevwebsummutnyxrextebfushepbenmuswyxsymselrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpelsyptermebsetdutdegtexsurfeltudnuxruxrenwytnubmedlytdusnebrumtynseglyxpunresredfunrevrefmectedrusbexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermertenlusnussyltecmexpubrymtucfyllepdebbermughuttunbylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmylwedducfurfexnulluclennerlexrupnedlecrydlydfenwelnydhusrelrudneshesfetdesretdunlernyrsebhulrylludremlysfynwerrycsugnysnyllyndyndemluxfedsedbecmunlyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes"
+                           (* 3 (bv2int ((_ extract 7 0) x!0)))
+                           3)))
+    (let ((a!3 (concat #x00 ((_ extract 7 0) (str_as_u64 (str.++ a!1 a!2)))))
+          (a!4 (concat #x00 ((_ extract 15 8) (str_as_u64 (str.++ a!1 a!2)))))
+          (a!5 (concat #x00 ((_ extract 23 16) (str_as_u64 (str.++ a!1 a!2)))))
+          (a!6 (concat #x00 ((_ extract 31 24) (str_as_u64 (str.++ a!1 a!2)))))
+          (a!7 (concat #x00 ((_ extract 39 32) (str_as_u64 (str.++ a!1 a!2)))))
+          (a!8 (concat #x00 ((_ extract 47 40) (str_as_u64 (str.++ a!1 a!2))))))
+      (= (bvadd (bvmul #x2512 a!3)
+                (bvmul #x69df a!4)
+                (bvmul #x1cb2 a!5)
+                (bvmul #xb662 a!6)
+                (bvmul #x0433 a!7)
+                (bvmul #x4969 a!8))
+         (bvadd #x7962 x!0)))))
+  (define-fun hash ((x!0 (_ BitVec 64))) (_ BitVec 16)
+    (bvadd #x869e
+           (bvmul #x2512 (concat #x00 ((_ extract 7 0) x!0)))
+           (bvmul #x69df (concat #x00 ((_ extract 15 8) x!0)))
+           (bvmul #x1cb2 (concat #x00 ((_ extract 23 16) x!0)))
+           (bvmul #xb662 (concat #x00 ((_ extract 31 24) x!0)))
+           (bvmul #x0433 (concat #x00 ((_ extract 39 32) x!0)))
+           (bvmul #x4969 (concat #x00 ((_ extract 47 40) x!0)))))
+  (define-fun star ((x!0 (_ BitVec 16))) String
+    (let ((a!1 (str.substr "dozmarbinwansamlitsighidfidlissogdirwacsabwissibrigsoldopmodfoglidhopdardorlorhodfolrintogsilmirholpaslacrovlivdalsatlibtabhanticpidtorbolfosdotlosdilforpilramtirwintadbicdifrocwidbisdasmidloprilnardapmolsanlocnovsitnidtipsicropwitnatpanminritpodmottamtolsavposnapnopsomfinfonbanmorworsipronnorbotwicsocwatdolmagpicdavbidbaltimtasmalligsivtagpadsaldivdactansidfabtarmonranniswolmispallasdismaprabtobrollatlonnodnavfignomnibpagsopralbilhaddocridmocpacravripfaltodtiltinhapmicfanpattaclabmogsimsonpinlomrictapfirhasbosbatpochactidhavsaplindibhosdabbitbarracparloddosbortochilmactomdigfilfasmithobharmighinradmashalraglagfadtopmophabnilnosmilfopfamdatnoldinhatnacrisfotribhocnimlarfitwalrapsarnalmoslandondanladdovrivbacpollaptalpitnambonrostonfodponsovnocsorlavmatmipfip"
+                           (* 3 (bv2int ((_ extract 15 8) x!0)))
+                           3))
+          (a!2 (str.substr "zodnecbudwessevpersutletfulpensytdurwepserwylsunrypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnexlunmeplutseppesdelsulpedtemledtulmetwenbynhexfebpyldulhetmevruttylwydtepbesdexsefwycburderneppurrysrebdennutsubpetrulsynregtydsupsemwynrecmegnetsecmulnymtevwebsummutnyxrextebfushepbenmuswyxsymselrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpelsyptermebsetdutdegtexsurfeltudnuxruxrenwytnubmedlytdusnebrumtynseglyxpunresredfunrevrefmectedrusbexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermertenlusnussyltecmexpubrymtucfyllepdebbermughuttunbylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmylwedducfurfexnulluclennerlexrupnedlecrydlydfenwelnydhusrelrudneshesfetdesretdunlernyrsebhulrylludremlysfynwerrycsugnysnyllyndyndemluxfedsedbecmunlyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes"
+                           (* 3 (bv2int ((_ extract 7 0) x!0)))
+                           3)))
+      (str.++ a!1 a!2)))
+  (define-fun syllable ((x!0 String) (x!1 Int)) String
+    (str.substr x!1 (* 3 x!0) 3))
+)
+real 4.47
+user 4.39
+sys 0.07

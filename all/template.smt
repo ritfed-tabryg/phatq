@@ -1,0 +1,21 @@
+(push)
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_a a b) (${OP_A} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_b a b) (${OP_B} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_c a b) (${OP_C} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_d a b) (${OP_D} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_e a b) (${OP_E} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_f a b) (${OP_F} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_g a b) (${OP_G} a b))))
+(assert (forall ((a (_ BitVec 64)) (b (_ BitVec 64))) (= (op_h a b) (${OP_H} a b))))
+
+(assert (forall (
+    (a (_ BitVec 64)) (b (_ BitVec 64)) (c (_ BitVec 64))
+    (d (_ BitVec 64)) (e (_ BitVec 64)) (f (_ BitVec 64))
+    (g (_ BitVec 64)) (h (_ BitVec 64)) (i (_ BitVec 64))
+) (= (op_combine a b c d e f g h i)
+    (${OP_COMBINE} a b c d e f g h i)
+)))
+
+(check-sat)
+(get-model)
+(pop)

@@ -1,0 +1,76 @@
+;(set-option :interactive-mode true)
+(set-option :parallel.enable true)
+(set-option :produce-models true)
+(set-option :smt.macro-finder true)
+(set-logic ALL)
+
+(define-const prefixes String "dozmarbinwansamlitsighidfidlissogdirwacsabwissibrigsoldopmodfoglidhopdardorlorhodfolrintogsilmirholpaslacrovlivdalsatlibtabhanticpidtorbolfosdotlosdilforpilramtirwintadbicdifrocwidbisdasmidloprilnardapmolsanlocnovsitnidtipsicropwitnatpanminritpodmottamtolsavposnapnopsomfinfonbanmorworsipronnorbotwicsocwatdolmagpicdavbidbaltimtasmalligsivtagpadsaldivdactansidfabtarmonranniswolmispallasdismaprabtobrollatlonnodnavfignomnibpagsopralbilhaddocridmocpacravripfaltodtiltinhapmicfanpattaclabmogsimsonpinlomrictapfirhasbosbatpochactidhavsaplindibhosdabbitbarracparloddosbortochilmactomdigfilfasmithobharmighinradmashalraglagfadtopmophabnilnosmilfopfamdatnoldinhatnacrisfotribhocnimlarfitwalrapsarnalmoslandondanladdovrivbacpollaptalpitnambonrostonfodponsovnocsorlavmatmipfip")
+(define-const suffixes String "zodnecbudwessevpersutletfulpensytdurwepserwylsunrypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnexlunmeplutseppesdelsulpedtemledtulmetwenbynhexfebpyldulhetmevruttylwydtepbesdexsefwycburderneppurrysrebdennutsubpetrulsynregtydsupsemwynrecmegnetsecmulnymtevwebsummutnyxrextebfushepbenmuswyxsymselrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpelsyptermebsetdutdegtexsurfeltudnuxruxrenwytnubmedlytdusnebrumtynseglyxpunresredfunrevrefmectedrusbexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermertenlusnussyltecmexpubrymtucfyllepdebbermughuttunbylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmylwedducfurfexnulluclennerlexrupnedlecrydlydfenwelnydhusrelrudneshesfetdesretdunlernyrsebhulrylludremlysfynwerrycsugnysnyllyndyndemluxfedsedbecmunlyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes")
+
+(define-fun syllable ((table String) (pos Int)) String
+    (str.substr table (* pos 3) 3)
+)
+
+(define-fun star ((id (_ BitVec 16))) String
+    (str.++
+        (syllable prefixes (bv2nat ((_ extract 15 8) id)))
+        (syllable suffixes (bv2nat ((_ extract 7 0) id)))
+    )
+)
+
+; warning: calling with strings >8 chars gives nonsense
+(define-fun-rec str_as_u64 ((s String)) (_ BitVec 64)
+    (ite (= (str.len s) 0) #x0000000000000000 (bvadd
+        (concat #x00000000000000 (seq.nth s 0))
+        (bvshl (str_as_u64 (str.substr s 1 (- (str.len s) 1))) #x0000000000000008)
+    ))
+)
+
+; TODO: try single (very lucky!) fold operation w/constant
+; before replicating what the python versions did
+; repeat for different definitions of hash fn
+
+; TODO: declare consts with sequences and/or recursively
+(declare-const a (_ BitVec 64))
+(declare-const b (_ BitVec 64))
+(declare-const c (_ BitVec 64))
+(declare-const d (_ BitVec 64))
+(declare-const e (_ BitVec 64))
+(declare-const f (_ BitVec 64))
+(declare-const g (_ BitVec 64))
+(declare-const h (_ BitVec 64))
+(declare-const x (_ BitVec 64))
+
+(define-fun hash ((name (_ BitVec 64))) (_ BitVec 16)
+    ((_ extract 15 0) (bvadd
+        ; TODO: use bitwise and instead of extract & concat?
+        (bvmul a (concat #x00000000000000 ((_ extract 7 0) name)))
+        (bvmul b (concat #x00000000000000 ((_ extract 15 8) name)))
+        (bvmul c (concat #x00000000000000 ((_ extract 23 16) name)))
+        (bvmul d (concat #x00000000000000 ((_ extract 31 24) name)))
+        (bvmul e (concat #x00000000000000 ((_ extract 39 32) name)))
+        (bvmul f (concat #x00000000000000 ((_ extract 47 40) name)))
+        (bvmul g (concat #x00000000000000 ((_ extract 55 48) name)))
+        (bvmul h (concat #x00000000000000 ((_ extract 63 56) name)))
+        x
+    ))
+)
+
+(define-fun hash_works ((i (_ BitVec 16))) Bool
+    (= (hash (str_as_u64 (star i))) i)
+)
+
+(define-fun-rec validate ((i (_ BitVec 16))) Bool
+    (ite (= i #x0000)
+        (hash_works i)
+        (and
+            (hash_works i)
+            (validate (bvsub i #x0001))
+        )
+    )
+)
+
+(assert (validate #x0003))
+
+(check-sat)
+(get-model)
